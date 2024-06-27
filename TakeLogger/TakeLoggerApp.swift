@@ -3,6 +3,10 @@ import SwiftUI
 import Combine
 import UniformTypeIdentifiers
 
+extension Color {
+    static let orange = Color(red: 1.0, green: 0.4, blue: 0.0)
+}
+
 @main
 struct TakeLoggerApp: App {
     var body: some Scene {
@@ -20,6 +24,18 @@ struct ContentView: View {
     @State private var timeRemaining: Int = 5400
     @State private var timerOn: Bool = false
     @State private var currentTime: String = ""
+        
+    var timerColor: Color {
+        if !timerOn {
+            return .yellow
+        } else if timeRemaining < 0 {
+            return .red
+        } else if timeRemaining < 300 { // 5 Minutes
+            return .orange
+        } else {
+            return .green
+        }
+    }
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -114,7 +130,7 @@ struct ContentView: View {
                     
                     Text(timerValue(timeInSeconds: timeRemaining))
                         .font(.system(size: 150, weight: .bold))
-                        .foregroundColor(timerOn ? (timeRemaining < 0 ? .red : (timeRemaining < 5 ? .orange : .green)) : .yellow)
+                        .foregroundColor(timerColor)
                         .padding()
                         .onReceive(timer) { _ in
                             if timerOn == true {
