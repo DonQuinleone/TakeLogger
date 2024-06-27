@@ -24,6 +24,8 @@ struct ContentView: View {
     @State private var timeRemaining: Int = 5400
     @State private var timerOn: Bool = false
     @State private var currentTime: String = ""
+    
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
         
     var timerColor: Color {
         if !timerOn {
@@ -36,9 +38,7 @@ struct ContentView: View {
             return .green
         }
     }
-    
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    
+
     var body: some View {
         HStack {
             VStack {
@@ -160,7 +160,6 @@ struct ContentView: View {
         }
         .background(Color.black)
         .onAppear {
-            // Ensure that initial take 1 entry is logged when ContentView appears
             logInitialTake()
             updateCurrentTime()
             setKeyCommands()
@@ -209,7 +208,7 @@ struct ContentView: View {
         alert.addButton(withTitle: "Cancel")
         
         let input = NSTextField(frame: NSRect(x: 0, y: 0, width: 200, height: 24))
-        input.stringValue = "\(takeNumber)"
+        //input.stringValue = "\(takeNumber)"
         alert.accessoryView = input
         
         let response = alert.runModal()
@@ -227,7 +226,7 @@ struct ContentView: View {
         alert.addButton(withTitle: "Cancel")
         
         let input = NSTextField(frame: NSRect(x: 0, y: 0, width: 200, height: 24))
-        input.stringValue = "\(timeRemaining)"
+        //input.stringValue = "\(timeRemaining)"
         alert.accessoryView = input
         
         let response = alert.runModal()
@@ -274,37 +273,52 @@ struct ContentView: View {
     
     private func setKeyCommands() {
         NSEvent.addLocalMonitorForEvents(matching: .keyDown) { event in
-            if event.modifierFlags.contains(.command) && event.keyCode == 0x05 { // Command+G (*G*o)
+            if event.modifierFlags.contains(.command) &&
+                event.keyCode == 0x05 { // Command+G (*G*o)
                 toggleTimer()
                 return nil
-            } else if event.modifierFlags.contains(.command) && event.keyCode == 0x24 { // Command+Return
+            } else if event.modifierFlags.contains(.command) &&
+                        event.keyCode == 0x24 { // Command+Return
                 nextTake()
                 return nil
-            } else if event.modifierFlags.contains(.command) && event.keyCode == 0x33 { // Command+Backspace
+            } else if event.modifierFlags.contains(.command) &&
+                        event.keyCode == 0x33 { // Command+Backspace
                 previousTake()
                 return nil
-            } else if event.modifierFlags.contains(.command) && event.keyCode == 0x11 { // Command+T (*T*ake number)
+            } else if event.modifierFlags.contains(.command) &&
+                        event.keyCode == 0x11 { // Command+T (*T*ake number)
                 presentTakeDialog()
                 return nil
-            } else if event.modifierFlags.contains(.command) && !event.modifierFlags.contains(.shift) && event.keyCode == 0x02 { // Command+D (*D*uration)
+            } else if event.modifierFlags.contains(.command) &&
+                        !event.modifierFlags.contains(.shift) &&
+                        event.keyCode == 0x02 { // Command+D (*D*uration)
                 presentTimerDialog()
                 return nil
-            } else if event.modifierFlags.contains(.command) && event.modifierFlags.contains(.shift) && event.keyCode == 0x02 { // Command+Shift+D (*D*uration)
+            } else if event.modifierFlags.contains(.command) &&
+                        event.modifierFlags.contains(.shift) &&
+                        event.keyCode == 0x02 { // Command+Shift+D (*D*uration)
                 timeRemaining = 5400
                 return nil
-            } else if event.modifierFlags.contains(.command) && !event.modifierFlags.contains(.shift) && event.keyCode == 0x03 { // Command+F (Add *F*alse start)
+            } else if event.modifierFlags.contains(.command) &&
+                        !event.modifierFlags.contains(.shift) &&
+                        event.keyCode == 0x03 { // Command+F (Add *F*alse start)
                 addFS()
                 return nil
-            } else if event.modifierFlags.contains(.command) && event.modifierFlags.contains(.shift) && event.keyCode == 0x03 { // Command+Shift+F (Delete *F*alse start)
+            } else if event.modifierFlags.contains(.command) &&
+                        event.modifierFlags.contains(.shift) &&
+                        event.keyCode == 0x03 { // Command+Shift+F (Delete *F*alse start)
                 delFS()
                 return nil
-            } else if event.modifierFlags.contains(.command) && event.keyCode == 0x2D { // Command+N (*N*otes)
+            } else if event.modifierFlags.contains(.command) &&
+                        event.keyCode == 0x2D { // Command+N (*N*otes)
                 presentNotesDialog()
                 return nil
-            } else if event.modifierFlags.contains(.command) && event.keyCode == 0x01 { // Command+S (*S*ave)
+            } else if event.modifierFlags.contains(.command) &&
+                        event.keyCode == 0x01 { // Command+S (*S*ave)
                 exportToCSV()
                 return nil
-            } else if event.modifierFlags.contains(.command) && event.keyCode == 0x1F { // Command+O (*O*pen)
+            } else if event.modifierFlags.contains(.command) &&
+                        event.keyCode == 0x1F { // Command+O (*O*pen)
                 importFromCSV()
                 return nil
             }
