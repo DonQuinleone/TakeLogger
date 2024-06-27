@@ -50,3 +50,11 @@ Should you wish to use the mouse, you can!
 * Double click on the timer to set a new timer
 * Click on a take in the take logger to select that take
 * Use the buttons at the top of the take logger (why would you though?)
+
+## Feature Requests & Bugs
+
+If you would like to request a new feature or have found a bug, please open an Issue and I'll look into it as soon possible.
+
+## Contributions
+
+Contributions very much welcome. Please feel free to open a PR.
