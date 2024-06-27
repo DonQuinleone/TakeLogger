@@ -5,7 +5,7 @@ For visually impaired music producers, keeping accurate take logs (and even just
 
 This simple macOS app is designed to get around that. It's nothing fancy, and it's certainly not going to win any awards, but it does the job. And once you're done with a session, you can export the take log to a CSV and send it to the engineer!
 
-https://github.com/DonQuinleone/TakeLogger/assets/12601483/40e5e536-c024-418c-bc61-a65d664c75bb
+![Screenshot](/screenshot.png)
 
 ## Key Commands
 
@@ -26,6 +26,7 @@ This is a keyboard-driven app, so it's crucial that you can get around using the
 | Cmd+Return | Next take |
 | Cmd+Backspace | Previous take |
 | Cmd+T | Enter take number |
+| Cmd+Shift+Return | Add and jump to new take |
 
 **Take Log**
 
@@ -34,6 +35,7 @@ This is a keyboard-driven app, so it's crucial that you can get around using the
 | Cmd+F | Increment FS counter for current take |
 | Cmd+Shift+F | Decrement FS counter for current take |
 | Cmd+N | Set notes for current take |
+| Cmd+L | Show/hide the take logger (shown by default) |
 
 **Import & Export**
 
