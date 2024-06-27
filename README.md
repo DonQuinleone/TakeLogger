@@ -5,7 +5,7 @@ For visually impaired music producers, keeping accurate take logs (and even just
 
 This simple macOS app is designed to get around that. It's nothing fancy, and it's certainly not going to win any awards, but it does the job. And once you're done with a session, you can export the take log to a CSV and send it to the engineer!
 
-![Screenshot](/screenshot.png?raw=true "Screenshot of TakeLogger in action")
+https://github.com/DonQuinleone/TakeLogger/assets/12601483/40e5e536-c024-418c-bc61-a65d664c75bb
 
 ## Key Commands
 
