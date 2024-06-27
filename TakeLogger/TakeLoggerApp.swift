@@ -114,7 +114,7 @@ struct ContentView: View {
                     
                     Text(timerValue(timeInSeconds: timeRemaining))
                         .font(.system(size: 150, weight: .bold))
-                        .foregroundColor(timerOn ? (timeRemaining < 0 ? .red : .green) : .yellow)
+                        .foregroundColor(timerOn ? (timeRemaining < 0 ? .red : (timeRemaining < 5 ? .orange : .green)) : .yellow)
                         .padding()
                         .onReceive(timer) { _ in
                             if timerOn == true {
