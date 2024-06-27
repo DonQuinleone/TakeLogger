@@ -24,6 +24,8 @@ struct ContentView: View {
     @State private var timeRemaining: Int = 5400
     @State private var timerOn: Bool = false
     @State private var currentTime: String = ""
+    @State private var scrollToTake: Int? = nil
+    @State private var showTakeLog: Bool = true
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
         
@@ -41,69 +43,79 @@ struct ContentView: View {
 
     var body: some View {
         HStack {
-            VStack {
-                HStack(alignment: .center) {
-                    Button(action: toggleTimer) {
-                        Image(systemName: "timer")
-                    }.help("Toggle Timer On/Off")
-                    .padding()
-                    Button(action: addFS) {
-                        Image(systemName: "plus")
-                    }.help("Add False Start")
-                    Button(action: delFS) {
-                        Image(systemName: "minus")
-                    }.help("Remove False Start")
-                    .padding()
-                    Button(action: previousTake) {
-                        Image(systemName: "lessthan")
-                    }.help("Go to Previous Take")
-                    Button(action: nextTake) {
-                        Image(systemName: "greaterthan")
-                    }.help("Go to Next Take")
-                    Button(action: presentNotesDialog) {
-                        Image(systemName: "note.text")
-                    }.help("Modify Take Notes")
-                    .padding()
-                    Button(action: exportToCSV) {
-                        Image(systemName: "square.and.arrow.up")
-                    }.help("Export to CSV")
-                    Button(action: importFromCSV) {
-                        Image(systemName: "square.and.arrow.down")
-                    }.help("Import CSV")
-                }
-                List {
-                    if takeLog.isEmpty {
-                        Text("No entries yet")
-                            .foregroundColor(.white)
+            if showTakeLog == true {
+                VStack {
+                    HStack(alignment: .center) {
+                        Button(action: toggleTimer) {
+                            Image(systemName: "timer")
+                        }.help("Toggle Timer On/Off")
                             .padding()
-                    } else {
-                        ForEach(takeLog.indices, id: \.self) { index in
-                            let log = takeLog[index]
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    Text("\(log.take)")
-                                        .font(.system(size: 40, weight: .bold))
-                                }
-                                .background(takeNumber == log.take ? Color.blue.opacity(0.1) : Color.clear)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 7.5)
-                                        .stroke(Color.blue, style: StrokeStyle(lineWidth: 2, dash: [5]))
-                                        .padding(-2)
-                                        .opacity(takeNumber == log.take ? 1 : 0)
-                                )
-                                .padding()
-                                Text("\(log.fs) FSs")
-                                    .font(.system(size: 35))
+                        Button(action: addFS) {
+                            Image(systemName: "plus")
+                        }.help("Add False Start")
+                        Button(action: delFS) {
+                            Image(systemName: "minus")
+                        }.help("Remove False Start")
+                            .padding()
+                        Button(action: previousTake) {
+                            Image(systemName: "lessthan")
+                        }.help("Go to Previous Take")
+                        Button(action: nextTake) {
+                            Image(systemName: "greaterthan")
+                        }.help("Go to Next Take")
+                        Button(action: presentNotesDialog) {
+                            Image(systemName: "note.text")
+                        }.help("Modify Take Notes")
+                            .padding()
+                        Button(action: exportToCSV) {
+                            Image(systemName: "square.and.arrow.up")
+                        }.help("Export to CSV")
+                        Button(action: importFromCSV) {
+                            Image(systemName: "square.and.arrow.down")
+                        }.help("Import CSV")
+                    }
+                    ScrollViewReader { proxy in
+                        List {
+                            if takeLog.isEmpty {
+                                Text("No entries yet")
+                                    .foregroundColor(.white)
                                     .padding()
-                                Text(log.notes)
-                                    .font(.system(size: 35))
-                            }.onTapGesture(count: 1) { takeNumber = log.take }
+                            } else {
+                                ForEach(takeLog.indices, id: \.self) { index in
+                                    let log = takeLog[index]
+                                    HStack {
+                                        VStack(alignment: .leading) {
+                                            Text("\(log.take)")
+                                                .font(.system(size: 40, weight: .bold))
+                                        }
+                                        .background(takeNumber == log.take ? Color.blue.opacity(0.1) : Color.clear)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 7.5)
+                                                .stroke(Color.blue, style: StrokeStyle(lineWidth: 2, dash: [5]))
+                                                .padding(-2)
+                                                .opacity(takeNumber == log.take ? 1 : 0)
+                                        )
+                                        .padding()
+                                        Text("\(log.fs) FSs")
+                                            .font(.system(size: 35))
+                                            .padding()
+                                        Text(log.notes)
+                                            .font(.system(size: 35))
+                                    }
+                                    .id(log.take) // For scrolling
+                                    .onTapGesture(count: 1) { takeNumber = log.take }
+                                }
+                            }
+                        }
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .onChange(of: scrollToTake) { _ in
+                            withAnimation {
+                                proxy.scrollTo(scrollToTake, anchor: .center)
+                            }
                         }
                     }
                 }
-                .padding()
-                .frame(maxWidth: .infinity)
-                
             }
             
             Spacer()
@@ -136,7 +148,6 @@ struct ContentView: View {
                             if timerOn == true {
                                 timeRemaining -= 1
                             }
-                            
                         }
                         .onTapGesture(count: 2) { presentTimerDialog() }
                 }
@@ -208,13 +219,13 @@ struct ContentView: View {
         alert.addButton(withTitle: "Cancel")
         
         let input = NSTextField(frame: NSRect(x: 0, y: 0, width: 200, height: 24))
-        //input.stringValue = "\(takeNumber)"
         alert.accessoryView = input
         
         let response = alert.runModal()
         if response == .alertFirstButtonReturn {
             if let newTakeNumber = Int(input.stringValue) {
-                takeNumber = newTakeNumber
+                takeNumber = min(newTakeNumber, latestTakeNumber())
+                scrollToTake = takeNumber
             }
         }
     }
@@ -226,7 +237,6 @@ struct ContentView: View {
         alert.addButton(withTitle: "Cancel")
         
         let input = NSTextField(frame: NSRect(x: 0, y: 0, width: 200, height: 24))
-        //input.stringValue = "\(timeRemaining)"
         alert.accessoryView = input
         
         let response = alert.runModal()
@@ -260,26 +270,48 @@ struct ContentView: View {
         timerOn.toggle()
     }
     
+    private func toggleTakeLogDisplay() {
+        showTakeLog.toggle()
+    }
+    
     private func nextTake() {
         takeNumber += 1
         if !takeLog.contains(where: { $0.take == takeNumber }) {
             addLogEntry()
         }
+        takeLog.sort { $0.take > $1.take }
+        scrollToTake = takeNumber
     }
     
     private func previousTake() {
         takeNumber = max(1, takeNumber - 1)
+        scrollToTake = takeNumber
+    }
+    
+    private func newTake() {
+        takeNumber = latestTakeNumber()
+        nextTake()
+    }
+    
+    private func latestTakeNumber() -> Int {
+        return takeLog.max(by: { $0.take < $1.take })?.take ?? 0
     }
     
     private func setKeyCommands() {
         NSEvent.addLocalMonitorForEvents(matching: .keyDown) { event in
             if event.modifierFlags.contains(.command) &&
-                event.keyCode == 0x05 { // Command+G (*G*o)
-                toggleTimer()
+                !event.modifierFlags.contains(.shift) &&
+                event.keyCode == 0x24 { // Command+Return
+                nextTake()
                 return nil
             } else if event.modifierFlags.contains(.command) &&
-                        event.keyCode == 0x24 { // Command+Return
-                nextTake()
+                    event.modifierFlags.contains(.shift) &&
+                    event.keyCode == 0x24 { // Command+Shift+Return
+                newTake()
+                return nil
+            } else if event.modifierFlags.contains(.command) &&
+                        event.keyCode == 0x25 { // Command+L (Show *L*ogger)
+                toggleTakeLogDisplay()
                 return nil
             } else if event.modifierFlags.contains(.command) &&
                         event.keyCode == 0x33 { // Command+Backspace
@@ -288,6 +320,10 @@ struct ContentView: View {
             } else if event.modifierFlags.contains(.command) &&
                         event.keyCode == 0x11 { // Command+T (*T*ake number)
                 presentTakeDialog()
+                return nil
+            } else if event.modifierFlags.contains(.command) &&
+                        event.keyCode == 0x05 { // Command+G (Start/Stop Timer - *G*o)
+                toggleTimer()
                 return nil
             } else if event.modifierFlags.contains(.command) &&
                         !event.modifierFlags.contains(.shift) &&
@@ -369,7 +405,8 @@ struct ContentView: View {
                         }
                     }
                     
-                    takeLog = importedLog
+                    takeLog = importedLog.sorted { $0.take > $1.take }
+                    scrollToTake = takeLog.first?.take
                 } catch {
                     print("Error reading CSV file: \(error.localizedDescription)")
                 }
