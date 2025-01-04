@@ -11,6 +11,8 @@ This simple macOS app is designed to get around that. It's nothing fancy, and it
 
 This is a keyboard-driven app, so it's crucial that you can get around using the keyboard shortcuts!
 
+If you want to set your own keyboard shortcuts, you can modify them in `config/KeyCommands.swift`
+
 **Timer**
 
 | Shortcut | Action |
