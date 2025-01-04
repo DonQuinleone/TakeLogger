@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,12 @@
 		B3F8F37B2C2CCCFE00D79141 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B3F8F37D2C2CCCFE00D79141 /* TakeLogger.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TakeLogger.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		B375014D2D28C62900275FB6 /* vendor */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = vendor; sourceTree = "<group>"; };
+		B37501592D28C8A100275FB6 /* config */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = config; sourceTree = "<group>"; };
+		B375015A2D28C8B100275FB6 /* inc */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = inc; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		B3F8F36E2C2CCCFC00D79141 /* Frameworks */ = {
@@ -51,6 +57,9 @@
 			isa = PBXGroup;
 			children = (
 				B3F8F3742C2CCCFC00D79141 /* TakeLoggerApp.swift */,
+				B37501592D28C8A100275FB6 /* config */,
+				B375015A2D28C8B100275FB6 /* inc */,
+				B375014D2D28C62900275FB6 /* vendor */,
 				B3F8F3782C2CCCFE00D79141 /* Assets.xcassets */,
 				B3F8F37D2C2CCCFE00D79141 /* TakeLogger.entitlements */,
 				B3F8F37A2C2CCCFE00D79141 /* Preview Content */,
@@ -80,6 +89,11 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				B375014D2D28C62900275FB6 /* vendor */,
+				B37501592D28C8A100275FB6 /* config */,
+				B375015A2D28C8B100275FB6 /* inc */,
 			);
 			name = TakeLogger;
 			productName = TakeLogger;
@@ -272,7 +286,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 25w01a;
 				DEVELOPMENT_ASSET_PATHS = "\"TakeLogger/Preview Content\"";
 				DEVELOPMENT_TEAM = A529SW7LP2;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -280,12 +294,13 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = TakeLogger;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© Quinlan Cloud.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = cloud.quinlan.TakeLogger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -302,7 +317,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 25w01a;
 				DEVELOPMENT_ASSET_PATHS = "\"TakeLogger/Preview Content\"";
 				DEVELOPMENT_TEAM = A529SW7LP2;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -310,12 +325,13 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = TakeLogger;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© Quinlan Cloud.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = cloud.quinlan.TakeLogger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
