@@ -23,8 +23,8 @@ This is a keyboard-driven app, so it's crucial that you can get around using the
 
 | Shortcut | Action |
 | -------- | ------ |
-| Left/Down arrow | Previous take |
-| Right/Up arrow | Next take |
+| Left or Down arrow | Previous take |
+| Right or Up arrow | Next take |
 | T | Select take number |
 | Return | Add and jump to new take |
 
