@@ -15,27 +15,27 @@ This is a keyboard-driven app, so it's crucial that you can get around using the
 
 | Shortcut | Action |
 | -------- | ------ |
-| Cmd+D    | Set timer duration in minutes |
-| Cmd+Shift+D | Reset timer to 01:30:00 |
-| Cmd+G | Start/Stop the timer - "Go" |
+| D | Set timer duration in minutes |
+| R | Reset timer to 01:30:00 |
+| Space | Toggle the timer |
 
 **Take Number**
 
 | Shortcut | Action |
 | -------- | ------ |
-| Cmd+Return | Next take |
-| Cmd+Backspace | Previous take |
-| Cmd+T | Enter take number |
-| Cmd+Shift+Return | Add and jump to new take |
+| Left/Down arrow | Previous take |
+| Right/Up arrow | Next take |
+| T | Select take number |
+| Return | Add and jump to new take |
 
 **Take Log**
 
 | Shortcut | Action |
 | -------- | ------ |
-| Cmd+F | Increment FS counter for current take |
-| Cmd+Shift+F | Decrement FS counter for current take |
-| Cmd+N | Set notes for current take |
-| Cmd+L | Show/hide the take logger (shown by default) |
+| F | Increment FS counter for current take |
+| G or Shift+F | Decrement FS counter for current take |
+| N | Set notes for current take |
+| L | Show/hide the take logger (shown by default) |
 
 **Import & Export**
 
@@ -48,10 +48,9 @@ This is a keyboard-driven app, so it's crucial that you can get around using the
 
 Should you wish to use the mouse, you can!
 
-* Double click on the take number to enter a new value
-* Double click on the timer to set a new timer
+* Click on the take number to enter a new value
+* Click on the timer to set a new timer
 * Click on a take in the take logger to select that take
-* Use the buttons at the top of the take logger (why would you though?)
 
 ## Feature Requests & Bugs
 
