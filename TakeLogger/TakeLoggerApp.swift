@@ -1,18 +1,26 @@
 import Foundation
 import SwiftUI
+import Cocoa
 
 @main
 struct TakeLoggerApp: App {
     @StateObject private var appState = AppState()
     
+    init() {
+      UserDefaults.standard.set(false, forKey: "NSFullScreenMenuItemEverywhere")
+    }
+    
     var body: some Scene {
         WindowGroup("TakeLogger") {
             MainWindow()
                 .environmentObject(appState)
+                .onAppear { NSWindow.allowsAutomaticWindowTabbing = false }
         }
+        .commands{MenuManager()}
         WindowGroup("Producer Window") {
             ProducerWindow()
                 .environmentObject(appState)
+                .onAppear { NSWindow.allowsAutomaticWindowTabbing = false }
         }
         .handlesExternalEvents(matching: Set(arrayLiteral: "producerWindow"))
     }

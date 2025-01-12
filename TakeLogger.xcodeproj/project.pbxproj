@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B3B0314C2D336B16004BF862 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B3B0314B2D336B16004BF862 /* Credits.rtf */; };
 		B3F8F3752C2CCCFC00D79141 /* TakeLoggerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F8F3742C2CCCFC00D79141 /* TakeLoggerApp.swift */; };
 		B3F8F3792C2CCCFE00D79141 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3F8F3782C2CCCFE00D79141 /* Assets.xcassets */; };
 		B3F8F37C2C2CCCFE00D79141 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3F8F37B2C2CCCFE00D79141 /* Preview Assets.xcassets */; };
@@ -14,6 +15,7 @@
 
 /* Begin PBXFileReference section */
 		B3B0313F2D335432004BF862 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B3B0314B2D336B16004BF862 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		B3F8F3712C2CCCFC00D79141 /* TakeLogger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TakeLogger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3F8F3742C2CCCFC00D79141 /* TakeLoggerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeLoggerApp.swift; sourceTree = "<group>"; };
 		B3F8F3782C2CCCFE00D79141 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				B3F8F3782C2CCCFE00D79141 /* Assets.xcassets */,
 				B3F8F37D2C2CCCFE00D79141 /* TakeLogger.entitlements */,
 				B3F8F37A2C2CCCFE00D79141 /* Preview Content */,
+				B3B0314B2D336B16004BF862 /* Credits.rtf */,
 			);
 			path = TakeLogger;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3F8F37C2C2CCCFE00D79141 /* Preview Assets.xcassets in Resources */,
+				B3B0314C2D336B16004BF862 /* Credits.rtf in Resources */,
 				B3F8F3792C2CCCFE00D79141 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
