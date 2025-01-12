@@ -29,4 +29,5 @@ class AppState: ObservableObject {
     @Published public var scrollToTake: Int? = nil
     @Published public var showTakeLog: Bool = true
     @Published public var dialogueOpen: Bool = false
+    @Published public var producerWindowOpen: Bool = false
 }

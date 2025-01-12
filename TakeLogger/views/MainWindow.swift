@@ -143,9 +143,4 @@ struct MainWindow: View {
             setKeyCommands()
         }
     }
-
-    public func toggleTakeLogDisplay() {
-        app.showTakeLog.toggle()
-    }
-    
 }
