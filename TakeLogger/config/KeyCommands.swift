@@ -39,7 +39,9 @@ extension MainWindow {
             else if event.modifierFlags.contains(.command) &&
                         event.keyCode   == Keycode.o/* +CMD */{ app.importFromCSV();                }
             
-            // Quit
+            // OS
+            else if event.modifierFlags.contains(.command) &&
+                        event.keyCode   == Keycode.m/* +CMD */{ NSApplication.shared.miniaturizeAll(self) }
             else if event.modifierFlags.contains(.command) &&
                         event.keyCode   == Keycode.q/* +CMD */{ NSApplication.shared.terminate(nil) }
             
