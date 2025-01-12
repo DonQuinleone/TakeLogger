@@ -5,6 +5,8 @@ For visually impaired music producers, keeping accurate take logs (and even just
 
 This simple macOS app is designed to get around that. It's nothing fancy, and it's certainly not going to win any awards, but it does the job. And once you're done with a session, you can export the take log to a CSV and send it to the engineer!
 
+There is also a separate producer window so that they can view what's going on too.
+
 ![Screenshot](/screenshot.png)
 
 ## Key Commands
@@ -45,6 +47,12 @@ If you want to set your own keyboard shortcuts, you can modify them in `config/K
 | -------- | ------ |
 | Cmd+S | Export take log to CSV |
 | Cmd+O | Import take log CSV (**empties current take log**) |
+
+**Show the Producer Window**
+
+| Shortcut | Action |
+| -------- | ------ |
+| P | Show producer window |
 
 ## Using the mouse
 
