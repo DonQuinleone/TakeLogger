@@ -30,8 +30,8 @@ extension MainWindow {
             else if event.keyCode       == Keycode.r          { app.resetTimer();                   }
             
             // View
-            else if event.keyCode       == Keycode.l          { toggleTakeLogDisplay();             }
-            else if event.keyCode       == Keycode.p          { toggleProducerWindow();             }
+            else if event.keyCode       == Keycode.l          { app.toggleTakeLogDisplay();         }
+            else if event.keyCode       == Keycode.p          { app.toggleProducerWindow();         }
             
             // CSV Export/Import
             else if event.modifierFlags.contains(.command) &&

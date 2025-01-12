@@ -16,7 +16,7 @@ struct TakeLoggerApp: App {
                 .environmentObject(appState)
                 .onAppear { NSWindow.allowsAutomaticWindowTabbing = false }
         }
-        .commands{MenuManager()}
+        .commands{MenuManager(app:appState)}
         WindowGroup("Producer Window") {
             ProducerWindow()
                 .environmentObject(appState)

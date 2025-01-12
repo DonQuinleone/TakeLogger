@@ -1,6 +1,8 @@
 import SwiftUI
 
 public struct MenuManager: Commands {
+    var app: AppState
+
     public var body: some Commands {
         
         // TakeLogger Menu
@@ -9,27 +11,27 @@ public struct MenuManager: Commands {
         
         // File Menu
         CommandGroup(replacing: CommandGroupPlacement.newItem) {
-            Button("Save as CSV"){}.keyboardShortcut("s", modifiers: [.command])
-            Button("Open CSV"){}.keyboardShortcut("o", modifiers: [.command])
+            Button("Save as CSV"){app.exportToCSV()}.keyboardShortcut("s", modifiers: [.command])
+            Button("Open CSV"){app.importFromCSV()}.keyboardShortcut("o", modifiers: [.command])
         }
         
         CommandMenu("Takes") {
-            Button("Previous Take"){}.keyboardShortcut(.leftArrow, modifiers: [])
-            Button("Next Take"){}.keyboardShortcut(.rightArrow, modifiers: [])
-            Button("New Take"){}.keyboardShortcut(.return, modifiers: [])
+            Button("Previous Take"){app.previousTake()}.keyboardShortcut(.leftArrow, modifiers: [])
+            Button("Next Take"){app.nextTake()}.keyboardShortcut(.rightArrow, modifiers: [])
+            Button("New Take"){app.newTake()}.keyboardShortcut(.return, modifiers: [])
             Divider()
-            Button("Set Take Number"){}.keyboardShortcut("t", modifiers: [])
+            Button("Set Take Number"){app.setTakeNumber()}.keyboardShortcut("t", modifiers: [])
             Divider()
-            Button("Add False Start"){}.keyboardShortcut("f", modifiers: [])
-            Button("Remove False Start"){}.keyboardShortcut("f", modifiers: [.shift])
+            Button("Add False Start"){app.addFS()}.keyboardShortcut("f", modifiers: [])
+            Button("Remove False Start"){app.delFS()}.keyboardShortcut("f", modifiers: [.shift])
             Divider()
-            Button("Set Notes"){}.keyboardShortcut("n", modifiers: [])
+            Button("Set Notes"){app.addNotes()}.keyboardShortcut("n", modifiers: [])
         }
         
         CommandMenu("Timer") {
-            Button("Toggle Timer"){}.keyboardShortcut(.space, modifiers: [])
-            Button("Set Remaining Duration"){}.keyboardShortcut("d", modifiers: [])
-            Button("Reset to 90 Minutes"){}.keyboardShortcut("r", modifiers: [])
+            Button("Toggle Timer"){app.toggleTimer()}.keyboardShortcut(.space, modifiers: [])
+            Button("Set Remaining Duration"){app.setTime()}.keyboardShortcut("d", modifiers: [])
+            Button("Reset to 90 Minutes"){app.resetTimer()}.keyboardShortcut("r", modifiers: [])
         }
         
         // Edit Menu
@@ -39,8 +41,8 @@ public struct MenuManager: Commands {
         
         // View Menu
         CommandGroup(replacing: CommandGroupPlacement.sidebar) {
-            Button("Toggle Take Log"){}.keyboardShortcut("l", modifiers: [])
-            Button("Toggle Producer Window"){}.keyboardShortcut("p", modifiers: [])
+            Button("Toggle Take Log"){app.toggleTakeLogDisplay()}.keyboardShortcut("l", modifiers: [])
+            Button("Toggle Producer Window"){app.toggleProducerWindow()}.keyboardShortcut("p", modifiers: [])
         }
         
         // Help Menu
