@@ -13,6 +13,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B3B0313F2D335432004BF862 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B3F8F3712C2CCCFC00D79141 /* TakeLogger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TakeLogger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3F8F3742C2CCCFC00D79141 /* TakeLoggerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeLoggerApp.swift; sourceTree = "<group>"; };
 		B3F8F3782C2CCCFE00D79141 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -24,6 +25,7 @@
 		B375014D2D28C62900275FB6 /* vendor */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = vendor; sourceTree = "<group>"; };
 		B37501592D28C8A100275FB6 /* config */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = config; sourceTree = "<group>"; };
 		B375015A2D28C8B100275FB6 /* inc */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = inc; sourceTree = "<group>"; };
+		B3B031392D334B6E004BF862 /* views */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = views; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,8 @@
 		B3F8F3732C2CCCFC00D79141 /* TakeLogger */ = {
 			isa = PBXGroup;
 			children = (
+				B3B0313F2D335432004BF862 /* Info.plist */,
+				B3B031392D334B6E004BF862 /* views */,
 				B3F8F3742C2CCCFC00D79141 /* TakeLoggerApp.swift */,
 				B37501592D28C8A100275FB6 /* config */,
 				B375015A2D28C8B100275FB6 /* inc */,
@@ -94,6 +98,7 @@
 				B375014D2D28C62900275FB6 /* vendor */,
 				B37501592D28C8A100275FB6 /* config */,
 				B375015A2D28C8B100275FB6 /* inc */,
+				B3B031392D334B6E004BF862 /* views */,
 			);
 			name = TakeLogger;
 			productName = TakeLogger;
@@ -292,6 +297,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TakeLogger/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TakeLogger;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "© Quinlan Cloud.";
@@ -323,6 +329,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TakeLogger/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TakeLogger;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "© Quinlan Cloud.";

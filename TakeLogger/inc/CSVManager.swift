@@ -1,7 +1,7 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
-extension ContentView {
+extension AppState {
     
     public func exportToCSV() {
         let dialog = NSSavePanel()

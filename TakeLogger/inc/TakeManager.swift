@@ -1,6 +1,6 @@
 import SwiftUI
 
-extension ContentView {
+extension AppState {
     
     // Take log setup
     
