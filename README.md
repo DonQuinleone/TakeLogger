@@ -5,7 +5,7 @@ For visually impaired music producers, keeping accurate take logs (and even just
 
 This simple macOS app is designed to get around that. It's nothing fancy, and it's certainly not going to win any awards, but it does the job. And once you're done with a session, you can export the take log to a CSV and send it to the engineer!
 
-There is also a separate producer window so that they can view what's going on too.
+A separate Producer Window is available if it is the engineer that is controlling the machine, allowing the producer to see just the information that's important.
 
 ![Screenshot](/screenshot.png)
 
